@@ -199,14 +199,7 @@ const PostCard: React.FC<PostCardProps> = ({ post, onLike, onDelete }) => {
                 )}
               </div>
             </div>
-          </div>
-          <div className="flex items-center gap-2">
-            {post.professionalismScore && post.professionalismScore > 85 && (
-              <div className="flex items-center gap-1.5 px-3 py-1 bg-success-50 dark:bg-success-900/20 border border-success-500/20 rounded-full">
-                <ShieldCheck className="w-3.5 h-3.5 text-success-500" />
-                <span className="text-[9px] font-black text-success-600 dark:text-success-400 uppercase tracking-widest">Verified Content</span>
-              </div>
-            )}
+          </div>          <div className="flex items-center gap-2">
             {post.isPromoted && (
               <span className="text-[10px] font-black text-primary-500 uppercase tracking-widest bg-primary-50 dark:bg-primary-900/30 px-2 py-1 rounded">Promoted</span>
             )}
@@ -220,39 +213,6 @@ const PostCard: React.FC<PostCardProps> = ({ post, onLike, onDelete }) => {
             />
           </div>
         </div>
-
-        {/* AI Insight (Visible to Owner or Pro users) */}
-        {(isOwner || user?.accountType === 'business') && post.professionalismScore !== undefined && (
-          <div className="mb-4 p-3 bg-gray-50/50 dark:bg-gray-950/50 rounded-2xl border border-dashed border-gray-200 dark:border-gray-800">
-             <div className="flex items-center justify-between mb-2">
-               <div className="flex items-center gap-2">
-                 <Zap className="w-3 h-3 text-yellow-500" />
-                 <span className="text-[10px] font-black uppercase tracking-widest text-gray-400">AI Professionalism Score</span>
-               </div>
-               <span className={`text-xs font-black ${
-                 post.professionalismScore > 80 ? 'text-success-500' : 
-                 post.professionalismScore > 50 ? 'text-primary-500' : 'text-orange-500'
-               }`}>
-                 {post.professionalismScore}%
-               </span>
-             </div>
-             <div className="h-1 w-full bg-gray-200 dark:bg-gray-800 rounded-full overflow-hidden">
-               <motion.div 
-                 initial={{ width: 0 }}
-                 animate={{ width: `${post.professionalismScore}%` }}
-                 className={`h-full bg-gradient-to-r ${
-                   post.professionalismScore > 80 ? 'from-success-400 to-success-600' : 
-                   post.professionalismScore > 50 ? 'from-primary-400 to-primary-600' : 'from-orange-400 to-orange-600'
-                 }`}
-               />
-             </div>
-             {isOwner && post.professionalismScore < 60 && (
-               <p className="mt-2 text-[10px] text-gray-500 font-medium italic">
-                 Tip: Adding more technical keywords or structure can boost your reach.
-               </p>
-             )}
-          </div>
-        )}
 
         {/* Content */}
         <div className="mb-4">

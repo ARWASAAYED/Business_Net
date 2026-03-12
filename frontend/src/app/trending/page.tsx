@@ -62,7 +62,7 @@ export default function TrendingPage() {
           </div>
           <div className="relative z-10">
             <Badge className="mb-4 bg-white/20 backdrop-blur-md text-white border-none py-1.5 px-4 rounded-full font-black uppercase tracking-widest text-[10px]">
-              Live Pulse Analytics
+              Market Trend Analytics
             </Badge>
             <h1 className="text-4xl md:text-5xl font-black text-white mb-4 tracking-tighter">
               What's Trending <span className="text-primary-300">Today</span>
@@ -190,12 +190,6 @@ export default function TrendingPage() {
                         <span className="font-bold text-gray-900 dark:text-gray-100 group-hover:text-primary-600 transition-colors">
                           #{topic.name}
                         </span>
-                        {topic.pulse && (
-                          <div className="flex items-center gap-2 text-[9px] font-bold text-gray-400 uppercase tracking-tighter">
-                            <span>H: <span className="text-gray-600 dark:text-gray-400 font-black">{topic.pulse.high}</span></span>
-                            <span>L: <span className="text-gray-600 dark:text-gray-400 font-black">{topic.pulse.low}</span></span>
-                          </div>
-                        )}
                       </div>
                     </div>
                     <div className="flex flex-col items-end">

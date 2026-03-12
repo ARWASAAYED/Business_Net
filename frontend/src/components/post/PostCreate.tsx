@@ -91,7 +91,7 @@ const PostCreate: React.FC<PostCreateProps> = ({ onSubmit }) => {
             onChange={(e) => setContent(e.target.value)}
             onFocus={() => setIsExpanded(true)}
             placeholder="Share something professional..."
-            className="w-full px-0 py-2 bg-transparent border-none focus:ring-0 text-lg text-gray-900 dark:text-gray-100 placeholder:text-gray-500 dark:placeholder:text-gray-400 resize-none min-h-[40px] transition-all duration-300"
+            className="w-full px-0 py-2 bg-transparent border-none focus:ring-0 text-lg text-gray-900 dark:text-gray-900 placeholder:text-gray-500 dark:placeholder:text-gray-400 resize-none min-h-[40px] transition-all duration-300"
             rows={isExpanded ? 3 : 1}
           />
 

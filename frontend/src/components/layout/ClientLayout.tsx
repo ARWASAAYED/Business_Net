@@ -41,7 +41,7 @@ const ClientLayout: React.FC<ClientLayoutProps> = ({ children }) => {
       </div>
 
       <Navbar />
-      <MarketTicker />
+      {!isLandingOrAuth && <MarketTicker />}
       <div className="flex-1 flex flex-col lg:flex-row relative z-10">
         {showSidebar && <Sidebar />}
         <main className={`flex-1 ${showSidebar ? 'lg:pl-0' : ''}`}>

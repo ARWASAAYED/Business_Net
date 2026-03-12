@@ -50,8 +50,8 @@ const LoginForm = () => {
           >
             <Sparkles className="w-8 h-8 text-white" />
           </motion.div>
-          <h1 className="text-3xl font-bold gradient-text mb-2">Welcome Back</h1>
-          <p className="text-gray-600">Enter your credentials to access your account</p>
+          <h1 className="text-3xl font-bold gradient-text mb-2 text-center">Welcome Back</h1>
+          <p className="text-gray-600 dark:text-gray-400 text-center">Enter your credentials to access your account</p>
         </div>
 
         <form onSubmit={handleSubmit} className="space-y-5">
@@ -59,7 +59,7 @@ const LoginForm = () => {
             <motion.div
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
-              className="p-4 text-sm text-red-600 bg-red-50 rounded-lg border border-red-200"
+              className="p-4 text-sm text-red-600 dark:text-red-400 bg-red-50 dark:bg-red-900/20 rounded-lg border border-red-200 dark:border-red-800/50"
             >
               {error}
             </motion.div>
@@ -67,7 +67,7 @@ const LoginForm = () => {
 
           {/* Email Input */}
           <div className="space-y-2">
-            <label className="text-sm font-medium text-gray-700 flex items-center gap-2">
+            <label className="text-sm font-medium text-gray-700 dark:text-gray-300 flex items-center gap-2">
               <Mail className="w-4 h-4 text-primary-500" />
               Email Address
             </label>
@@ -77,13 +77,13 @@ const LoginForm = () => {
               required
               value={formData.email}
               onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-              className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-primary-500 focus:ring-4 focus:ring-primary-100 transition-all duration-200 bg-white/50 backdrop-blur-sm"
+              className="w-full px-4 py-3 rounded-lg border border-gray-200 dark:border-gray-800 focus:border-primary-500 dark:focus:border-primary-400 focus:ring-4 focus:ring-primary-100 dark:focus:ring-primary-900/30 transition-all duration-200 bg-white/50 dark:bg-gray-50/50 backdrop-blur-sm text-gray-900 dark:text-gray-900 placeholder:text-gray-500 dark:placeholder:text-gray-400"
             />
           </div>
 
           {/* Password Input */}
           <div className="space-y-2">
-            <label className="text-sm font-medium text-gray-700 flex items-center gap-2">
+            <label className="text-sm font-medium text-gray-700 dark:text-gray-300 flex items-center gap-2">
               <Lock className="w-4 h-4 text-primary-500" />
               Password
             </label>
@@ -93,12 +93,12 @@ const LoginForm = () => {
               required
               value={formData.password}
               onChange={(e) => setFormData({ ...formData, password: e.target.value })}
-              className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-primary-500 focus:ring-4 focus:ring-primary-100 transition-all duration-200 bg-white/50 backdrop-blur-sm"
+              className="w-full px-4 py-3 rounded-lg border border-gray-200 dark:border-gray-800 focus:border-primary-500 dark:focus:border-primary-400 focus:ring-4 focus:ring-primary-100 dark:focus:ring-primary-900/30 transition-all duration-200 bg-white/50 dark:bg-gray-50/50 backdrop-blur-sm text-gray-900 dark:text-gray-900 placeholder:text-gray-500 dark:placeholder:text-gray-400"
             />
             <div className="flex justify-end">
               <Link 
                 href="/forgot-password" 
-                className="text-xs font-medium text-primary-600 hover:text-primary-700 hover:underline transition-colors"
+                className="text-xs font-medium text-primary-600 dark:text-primary-400 hover:text-primary-700 dark:hover:text-primary-300 hover:underline transition-colors"
               >
                 Forgot password?
               </Link>
@@ -126,23 +126,24 @@ const LoginForm = () => {
           {/* Divider */}
           <div className="relative my-6">
             <div className="absolute inset-0 flex items-center">
-              <div className="w-full border-t border-gray-200"></div>
+              <div className="w-full border-t border-gray-200 dark:border-gray-800"></div>
             </div>
             <div className="relative flex justify-center text-sm">
-              <span className="px-4 bg-white/80 text-gray-500 rounded-full">or</span>
+              <span className="px-4 bg-white/80 dark:bg-gray-900/80 text-gray-500 dark:text-gray-400 rounded-full">or</span>
             </div>
           </div>
 
           {/* Sign Up Link */}
-          <p className="text-center text-sm text-gray-600">
+          <p className="text-center text-sm text-gray-600 dark:text-gray-400">
             Don&apos;t have an account?{' '}
             <Link 
               href="/register" 
-              className="font-semibold text-primary-600 hover:text-primary-700 hover:underline transition-colors"
+              className="font-semibold text-primary-600 dark:text-primary-400 hover:text-primary-700 dark:hover:text-primary-300 hover:underline transition-colors"
             >
               Create one for free
             </Link>
           </p>
+
         </form>
       </div>
     </motion.div>

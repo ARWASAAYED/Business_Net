@@ -39,7 +39,6 @@ const Sidebar = () => {
     { href: '/business', label: 'Business', icon: Building2 },
     { href: '/promotions', label: 'Promotions', icon: Megaphone },
     { href: '/trending', label: 'Trending', icon: TrendingUp },
-    { href: '/battles', label: 'Battles', icon: Swords },
     { href: '/messages', label: 'Messages', icon: MessageSquare, badge: 0 },
     { href: '/notifications', label: 'Notifications', icon: Bell, badge: unreadCount },
 

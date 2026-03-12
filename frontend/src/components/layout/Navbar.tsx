@@ -16,6 +16,8 @@ import { useNotifications } from '@/hooks/useNotifications';
 const Navbar = () => {
   const pathname = usePathname();
   const router = useRouter();
+  
+  if (pathname === '/login' || pathname === '/register') return null;
   const { user, isAuthenticated, logout } = useAuth();
   const { unreadCount } = useNotifications();
   const [showNotifications, setShowNotifications] = useState(false);
