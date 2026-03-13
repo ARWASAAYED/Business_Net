@@ -1,8 +1,72 @@
 export const MOCK_USERS = [
-  { id: "1", _id: "1", fullName: "Ahmed Hassan", username: "ahmed_h", email: "ahmed@demo.com", bio: "Full-stack developer & open-source enthusiast", location: "Cairo, Egypt", accountType: "personal", role: "user", avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=Ahmed" },
-  { id: "2", _id: "2", fullName: "Sara Mohamed", username: "sara_m", email: "sara@demo.com", bio: "UX Designer | Making the web beautiful", location: "Alexandria, Egypt", accountType: "personal", role: "user", avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=Sara" },
-  { id: "3", _id: "3", fullName: "Omar Khalil", username: "omar_k", email: "omar@demo.com", bio: "Data Scientist | AI Researcher", location: "Dubai, UAE", accountType: "personal", role: "user", avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=Omar" },
-  { id: "4", _id: "4", fullName: "TechVenture Admin", username: "techventure", email: "admin@techventure.com", bio: "Leading tech startup incubator", location: "Cairo, Egypt", accountType: "business", role: "business", avatar: "https://api.dicebear.com/7.x/identicon/svg?seed=TechVenture" },
+  { 
+    _id: "1", 
+    fullName: "Ahmed Hassan", 
+    username: "ahmed_h", 
+    email: "ahmed@demo.com", 
+    bio: "Full-stack developer & open-source enthusiast", 
+    location: "Cairo, Egypt", 
+    accountType: "personal", 
+    role: "user", 
+    avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=Ahmed",
+    followers: ["2", "3"],
+    following: ["4"],
+    badges: [
+      { _id: "b1", name: "Early Adopter", rarity: "rare", description: "One of the first 100 members", imageUrl: "🚀" }
+    ],
+    createdAt: "2024-01-01T12:00:00Z",
+    updatedAt: "2024-01-01T12:00:00Z"
+  },
+  { 
+    _id: "2", 
+    fullName: "Sara Mohamed", 
+    username: "sara_m", 
+    email: "sara@demo.com", 
+    bio: "UX Designer | Making the web beautiful", 
+    location: "Alexandria, Egypt", 
+    accountType: "personal", 
+    role: "user", 
+    avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=Sara",
+    followers: ["1"],
+    following: ["1", "3"],
+    badges: [],
+    createdAt: "2024-02-15T10:30:00Z",
+    updatedAt: "2024-02-15T10:30:00Z"
+  },
+  { 
+    _id: "3", 
+    fullName: "Omar Khalil", 
+    username: "omar_k", 
+    email: "omar@demo.com", 
+    bio: "Data Scientist | AI Researcher", 
+    location: "Dubai, UAE", 
+    accountType: "personal", 
+    role: "user", 
+    avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=Omar",
+    followers: ["2"],
+    following: ["1"],
+    badges: [],
+    createdAt: "2024-03-20T15:45:00Z",
+    updatedAt: "2024-03-20T15:45:00Z"
+  },
+  { 
+    _id: "4", 
+    fullName: "TechVenture Admin", 
+    username: "techventure", 
+    email: "admin@techventure.com", 
+    bio: "Leading tech startup incubator", 
+    location: "Cairo, Egypt", 
+    accountType: "business", 
+    role: "business", 
+    avatar: "https://api.dicebear.com/7.x/identicon/svg?seed=TechVenture",
+    followers: ["1"],
+    following: [],
+    badges: [
+      { _id: "b2", name: "Verified Business", rarity: "epic", description: "Vetted business entity", imageUrl: "🏢" }
+    ],
+    createdAt: "2023-11-10T09:00:00Z",
+    updatedAt: "2023-11-10T09:00:00Z"
+  },
 ];
 
 export const MOCK_POSTS = [
