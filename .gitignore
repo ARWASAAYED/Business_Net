@@ -45,3 +45,5 @@ uploads/
 # Misc
 *.log
 *.tmp
+# Local Database Data
+db_data/

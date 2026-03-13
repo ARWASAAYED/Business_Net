@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import { useParams, useRouter } from "next/navigation";
-import { MapPin, Link as LinkIcon, Calendar, MessageCircle } from "lucide-react";
+import { MapPin, Link as LinkIcon, Calendar, MessageCircle, Swords } from "lucide-react";
 import Avatar from "@/components/common/Avatar";
 import Button from "@/components/common/Button";
 import Card from "@/components/common/Card";
@@ -13,7 +13,7 @@ import userService, { User } from "@/services/userService";
 import postService from "@/services/postService";
 import messageService from "@/services/messageService";
 import { useAuth } from "@/hooks/useAuth";
-
+import DuelChallengeModal from "@/components/duel/DuelChallengeModal";
 
 export default function ProfilePage() {
   const params = useParams();
@@ -24,7 +24,7 @@ export default function ProfilePage() {
   const [isLoading, setIsLoading] = useState(true);
   const [isLoadingPosts, setIsLoadingPosts] = useState(false);
   const [isFollowing, setIsFollowing] = useState(false);
-
+  const [isDuelModalOpen, setIsDuelModalOpen] = useState(false);
 
   const userId =
     (params?.userId as string) || currentUser?.id || currentUser?._id;
@@ -153,7 +153,14 @@ export default function ProfilePage() {
                     >
                       {isFollowing ? "Following" : "Follow"}
                     </Button>
-
+                    <Button
+                      variant="secondary"
+                      onClick={() => setIsDuelModalOpen(true)}
+                      className="flex items-center gap-2 bg-amber-500 hover:bg-amber-600 text-white border-none"
+                    >
+                      <Swords className="w-4 h-4" />
+                      Duel
+                    </Button>
                     <Button
                       variant="outline"
                       onClick={handleMessage}
@@ -284,7 +291,13 @@ export default function ProfilePage() {
         <PostList posts={posts} isLoading={isLoadingPosts} />
       </div>
 
-
+      {user && (
+        <DuelChallengeModal 
+          opponent={user}
+          isOpen={isDuelModalOpen}
+          onClose={() => setIsDuelModalOpen(false)}
+        />
+      )}
     </div>
   );
 }
