@@ -1,21 +1,58 @@
 import axios, { AxiosInstance, AxiosError } from "axios";
 import { API_URL } from "@/utils/constants";
+import * as MOCK_DATA from "@/utils/mockData";
+
+const USE_MOCK = process.env.NEXT_PUBLIC_USE_MOCK === 'true';
 
 const api: AxiosInstance = axios.create({
   baseURL: API_URL,
 });
 
+// Mock Interceptor
+if (USE_MOCK) {
+  api.interceptors.request.use(async (config) => {
+    console.warn(`[MOCK API] ${config.method?.toUpperCase()} ${config.url}`);
+    
+    // Simulate network delay
+    await new Promise(resolve => setTimeout(resolve, 500));
+
+    let data: any = null;
+
+    if (config.url?.includes('/posts')) {
+      data = { success: true, data: { posts: MOCK_DATA.MOCK_POSTS, hasMore: false } };
+    } else if (config.url?.includes('/communities')) {
+      data = { success: true, data: { communities: MOCK_DATA.MOCK_COMMUNITIES } };
+    } else if (config.url?.includes('/trends')) {
+      data = { success: true, data: MOCK_DATA.MOCK_TRENDS };
+    } else if (config.url?.includes('/auth/me')) {
+      data = { success: true, data: MOCK_DATA.MOCK_USERS[0] };
+    } else {
+      data = { success: true, data: [] };
+    }
+
+    // Return a resolved promise with the mock data to bypass the actual request
+    return Promise.reject({
+      config,
+      response: {
+        data,
+        status: 200,
+        statusText: 'OK',
+        headers: {},
+        config
+      }
+    });
+  });
+}
+
 // Request interceptor
 api.interceptors.request.use(
   (config) => {
-    const token = localStorage.getItem("token");
+    const token = typeof window !== 'undefined' ? localStorage.getItem("token") : null;
     if (token) {
       config.headers.Authorization = `Bearer ${token}`;
     }
 
-    // If we're sending FormData (file uploads), let the browser set the Content-Type with boundary
     if (config.data instanceof FormData) {
-      // Remove default content-type so axios/browser sets the proper multipart/form-data boundary
       if (config.headers) {
         delete (config.headers as any)["Content-Type"];
         delete (config.headers as any)["content-type"];
@@ -32,11 +69,17 @@ api.interceptors.request.use(
 // Response interceptor
 api.interceptors.response.use(
   (response) => response,
-  (error: AxiosError) => {
+  (error: any) => {
+    // If it's our mock response, return it as success
+    if (USE_MOCK && error.response && error.response.status === 200) {
+      return Promise.resolve(error.response);
+    }
+
     if (error.response?.status === 401) {
-      // Unauthorized - clear token and redirect to login
-      localStorage.removeItem("token");
-      window.location.href = "/login";
+      if (typeof window !== 'undefined') {
+        localStorage.removeItem("token");
+        window.location.href = "/login";
+      }
     }
     return Promise.reject(error);
   }

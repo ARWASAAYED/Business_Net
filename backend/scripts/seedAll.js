@@ -115,6 +115,9 @@ const postsContent = [
   // General
   { content: "Networking isn't about collecting business cards—it's about building genuine relationships. The most valuable connections I've made came from helping others without expecting anything in return. 🤝 #Networking #ProfessionalGrowth", category: "General" },
   { content: "Work-life balance update: Started blocking 12-1pm daily for a walk. No phone, no notifications. Productivity actually INCREASED by 20%. Your brain needs rest to perform. 🧠 #WorkLifeBalance #Productivity #MentalHealth", category: "General" },
+  { content: "What's the best piece of career advice you've ever received? For me, it was 'Never stop being a student, no matter how many years of experience you have.' #CareerAdvice #GrowthMindset", category: "General" },
+  { content: "Just reached a new milestone today! It's been a long journey but the hard work is finally paying off. Thanks to everyone who supported me along the way. ✨ #Milestone #Gratitude", category: "General" },
+  { content: "Reflecting on the last year: Failure isn't the opposite of success, it's part of it. Every mistake taught me something valuable for the next project. #Learning #StartupJourney", category: "General" },
 ];
 
 const hashtagsData = [
@@ -290,7 +293,8 @@ async function seedPosts(users, categories, hashtags) {
   const businessUsers = users.filter(u => u.accountType === "business");
   const posts = [];
 
-  for (const postData of postsContent) {
+  for (let i = 0; i < 50; i++) {
+    const postData = pick(postsContent);
     const isBusinessPost = Math.random() > 0.7 && businessUsers.length > 0;
     const author = isBusinessPost ? pick(businessUsers) : pick(personalUsers);
     const category = categories.find(c => c.name === postData.category) || pick(categories);
