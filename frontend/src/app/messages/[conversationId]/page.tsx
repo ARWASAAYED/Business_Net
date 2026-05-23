@@ -206,7 +206,7 @@ export default function ConversationPage() {
         recipientId={recipient?._id}
         recipientName={recipient?.username || "Unknown"}
         recipientAvatar={recipient?.avatar}
-        isOnline={recipient?.isOnline}
+        isOnline={recipient?.isOnline as boolean | undefined}
       />
     </div>
   );
