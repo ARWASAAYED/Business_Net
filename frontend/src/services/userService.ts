@@ -13,6 +13,7 @@ export interface User {
   followers: string[];
   following: string[];
   badges?: any[]; // Should ideally link to Badge type, but any is safe for now
+   isOnline?: boolean;
   createdAt: string;
   updatedAt: string;
 }
